@@ -3,10 +3,7 @@ import { Oswald } from 'next/font/google'
 
 const fonts = Oswald({ subsets: ['latin'] })
 
-export async function generateMetadata() {
-
-  return fetch(`${process.env.BASE_URL}/meta.json`).then(response => response.json())
-}
+export const metadata = { title: 'Almir & Nerma Hrštić' }
 
 export default function Layout({ children }) {
 

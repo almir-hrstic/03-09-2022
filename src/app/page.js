@@ -6,10 +6,7 @@ import { useState, useRef, useEffect } from 'react'
 
 export default function Page() {
 
-  const [data, setData] = useState()
   const [activeImage, setActiveImage] = useState(0)
-  const [primaryCounter, setPrimaryCounter] = useState()
-  const [secondaryCounter, setSecondaryCounter] = useState()
 
   const root = useRef()
   const audio = useRef()
@@ -19,16 +16,15 @@ export default function Page() {
 
   const setScreenHeight = () => root.current.style.setProperty('--screen-height', `${Math.floor(window.innerHeight)}px`)
 
-  const getData = () => {
-
-    fetch(`${process.env.BASE_URL}/data.json`).then(response => response.json()).then(response => setData(response))
-  }
-
   const getImages = () => {
 
     if (imageCount > 1) {
 
-      imagesInterval = setInterval(() => setActiveImage(image => image < imageCount - 1 ? image + 1 : 0), 5000)
+      imagesInterval = setInterval(() => {
+
+        setActiveImage(image => image < imageCount - 1 ? image + 1 : 0)
+
+      }, parseInt(audio.current.duration / imageCount) * 1000)
     }
   }
 
@@ -37,35 +33,28 @@ export default function Page() {
     return `${Math.floor((new Date().getTime() - new Date(`${date} GMT+0100`).getTime()) / (1000 * 60 * 60 * 24))}`
   }
 
+  const setActive = () => {
+
+    root.current.classList.add(styles.root____active)
+    audio.current.play()
+
+    getImages()
+  }
+
   useEffect(() => {
 
     setScreenHeight()
     window.addEventListener('resize', debounce(() => setScreenHeight()))
 
-    getData()
-    getImages()
-
     return () => clearInterval(imagesInterval)
 
   }, [])
-
-  useEffect(() => {
-
-    if (data) {
-
-      setPrimaryCounter(getCounter(data.dates.primary))
-      setSecondaryCounter(getCounter(data.dates.secondary))
-    }
-
-  }, [data])
 
   return (
 
     <div className={styles.root} ref={root}>
 
-      <audio src={`${process.env.BASE_URL}/background.mp3`} ref={audio} loop>
-
-      </audio>
+      <audio src={`${process.env.BASE_URL}/background.mp3`} ref={audio} loop />
 
       {
 
@@ -76,27 +65,21 @@ export default function Page() {
 
       }
 
-      {
+      <div className={styles.root__container}>
 
-        data &&
+        <button className={styles.counters} onClick={() => setActive()}>
 
-        <div className={styles.root__container}>
+          <p>
+            {getCounter('Sep 03, 2022')}
+          </p>
 
-          <button className={styles.counters} onClick={() => audio.current.play()}>
+          <p className={styles.counters__secondary}>
+            {getCounter('Dec 27, 2018')}
+          </p>
 
-            <p>
-              {primaryCounter}
-            </p>
+        </button>
 
-            <p className={styles.counters__secondary}>
-              {secondaryCounter}
-            </p>
-
-          </button>
-
-        </div>
-
-      }
+      </div>
 
     </div>
   )
