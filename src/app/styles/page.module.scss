@@ -33,8 +33,8 @@
 
   &__container {
     max-width: $screen-extra-small;
-    margin: auto;
     padding: 0 20px;
+    margin: auto;
     z-index: 1;
 
     .counters {
@@ -42,7 +42,6 @@
       overflow: hidden;
       transition: opacity 1s ease-in-out, transform .25s ease-in-out;
       animation: fade-in 1s ease-in-out;
-      cursor: pointer;
       @extend .text-100;
 
       &__secondary {
@@ -94,6 +93,10 @@
 
     &__container {
       padding: 0 30px;
+
+      .counters {
+        cursor: pointer;
+      }
     }
   }
 }

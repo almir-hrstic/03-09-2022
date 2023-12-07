@@ -3,7 +3,7 @@ import { Oswald } from 'next/font/google'
 
 const fonts = Oswald({ subsets: ['latin'] })
 
-export const metadata = { title: 'Almir & Nerma Hrštić' }
+export const metadata = { title: '03.09.2022' }
 
 export default function Layout({ children }) {
 
