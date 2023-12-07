@@ -12,7 +12,7 @@ export default function Page() {
   const audio = useRef()
 
   const imageCount = parseInt(process.env.IMAGE_COUNT)
-  let imagesInterval = null
+  let imageInterval = null
 
   const setScreenHeight = () => root.current.style.setProperty('--screen-height', `${Math.floor(window.innerHeight)}px`)
 
@@ -20,11 +20,7 @@ export default function Page() {
 
     if (imageCount > 1) {
 
-      imagesInterval = setInterval(() => {
-
-        setActiveImage(image => image < imageCount - 1 ? image + 1 : 0)
-
-      }, parseInt(audio.current.duration / imageCount) * 1000)
+      imageInterval = setInterval(() => setActiveImage(image => image < imageCount - 1 ? image + 1 : 0), 5000)
     }
   }
 
@@ -46,7 +42,7 @@ export default function Page() {
     setScreenHeight()
     window.addEventListener('resize', debounce(() => setScreenHeight()))
 
-    return () => clearInterval(imagesInterval)
+    return () => clearInterval(imageInterval)
 
   }, [])
 
@@ -54,13 +50,13 @@ export default function Page() {
 
     <div className={styles.root} ref={root}>
 
-      <audio src={`${process.env.BASE_URL}/background.mp3`} ref={audio} loop />
+      <audio src={`${process.env.BASE_URL}/background.mp3`} preload="none" loop={true} ref={audio} />
 
       {
 
         [...Array(imageCount)].map((image, index) => (
 
-          <img src={`${process.env.BASE_URL}/images/${index}.jpg`} className={index !== activeImage ? styles.image : `${styles.image} ${styles.image____active}`} key={index} loading={imageCount > 3 ? activeImage + 2 >= index ? 'eager' : 'lazy' : 'eager'} />
+          <img src={`${process.env.BASE_URL}/images/${index}.jpg`} className={index !== activeImage ? styles.image : `${styles.image} ${styles.image____active}`} key={index} loading={activeImage + 2 >= index ? 'eager' : 'lazy'} />
         ))
 
       }
