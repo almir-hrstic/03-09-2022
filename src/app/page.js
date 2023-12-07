@@ -60,7 +60,7 @@ export default function Page() {
 
         [...Array(imageCount)].map((image, index) => (
 
-          <img src={`${process.env.BASE_URL}/images/${index}.jpg`} className={index !== activeImage ? styles.image : `${styles.image} ${styles.image____active}`} key={index} />
+          <img src={`${process.env.BASE_URL}/images/${index}.jpg`} className={index !== activeImage ? styles.image : `${styles.image} ${styles.image____active}`} key={index} loading={imageCount > 3 ? activeImage + 2 >= index ? 'eager' : 'lazy' : 'eager'} />
         ))
 
       }
