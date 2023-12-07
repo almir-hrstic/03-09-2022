@@ -1,0 +1,9 @@
+@import "./reset.scss";
+@import "./export.scss";
+
+html {
+  color: $color-white;
+  background-color: $color-black;
+  scroll-behavior: smooth;
+  @extend .text-16;
+}

@@ -1,0 +1,79 @@
+@import './export.scss';
+
+.root {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: var(--screen-height);
+  user-select: none;
+
+  .image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1s ease-in-out;
+
+    &____active {
+      opacity: 1;
+    }
+  }
+
+  &__container {
+    max-width: $screen-extra-small;
+    margin: auto;
+    padding: 0 20px;
+    z-index: 1;
+
+    .counters {
+      padding-left: 25px;
+      overflow: hidden;
+      animation: fade-in 1s ease-in-out;
+      transition: opacity .25s ease-in-out;
+      cursor: pointer;
+      @extend .text-100;
+
+      &__secondary {
+        margin: -50px 0 0 -25px;
+        opacity: .25;
+      }
+
+      @keyframes fade-in {
+
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      &:hover {
+        opacity: .75;
+      }
+    }
+  }
+
+  &:after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    content: "";
+  }
+
+  // 1024px +
+
+  @media screen and (min-width: $screen-large) {
+
+    &__container {
+      padding: 0 30px;
+    }
+  }
+}
