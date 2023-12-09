@@ -14,14 +14,13 @@
     right: 0;
     bottom: 0;
     left: 0;
-    display: none;
     opacity: 0;
     object-fit: cover;
     transition: opacity 1s ease-in-out;
     filter: saturate(.9);
 
-    &[loading="eager"] {
-      display: block;
+    &[loading="lazy"] {
+      display: none;
     }
 
     &____active {
