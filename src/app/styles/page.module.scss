@@ -38,23 +38,11 @@
       padding-left: 25px;
       overflow: hidden;
       transition: opacity 1s ease-in-out, transform .25s ease-in-out;
-      animation: fade-in 1s ease-in-out;
       @extend .text-100;
 
       &__secondary {
         margin: -50px 0 0 -25px;
         opacity: .25;
-      }
-
-      @keyframes fade-in {
-
-        from {
-          opacity: 0;
-        }
-
-        to {
-          opacity: 1;
-        }
       }
 
       &:hover {
