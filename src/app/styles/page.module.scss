@@ -54,8 +54,8 @@
 
   svg {
     position: absolute;
-    right: 20px;
-    bottom: 20px;
+    right: 30px;
+    bottom: 30px;
     opacity: 0;
     transition: opacity .25s ease-in-out;
 
@@ -125,8 +125,6 @@
     }
 
     svg {
-      right: 30px;
-      bottom: 30px;
       cursor: pointer;
 
       &:hover {
