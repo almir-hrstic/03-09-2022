@@ -22,11 +22,7 @@ export default function Page() {
 
     if (imageCount > 1) {
 
-      imageInterval = setInterval(() => {
-
-        setActiveImage(image => image < imageCount - 1 ? image + 1 : 0)
-
-      }, parseInt(audio.current.duration / imageCount) * 1000)
+      imageInterval = setInterval(() => setActiveImage(image => image < imageCount - 1 ? image + 1 : 0), 5000)
     }
   }
 
@@ -56,7 +52,7 @@ export default function Page() {
 
     <div className={styles.root} ref={root}>
 
-      <audio src={`${process.env.BASE_URL}/background.mp3`} loop={true} ref={audio} />
+      <audio src={`${process.env.BASE_URL}/background.mp3`} preload="none" loop={true} ref={audio} />
 
       {
 
