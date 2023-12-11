@@ -37,7 +37,8 @@
     .counters {
       padding-left: 25px;
       overflow: hidden;
-      transition: opacity 1s ease-in-out, transform .25s ease-in-out;
+      will-change: transform;
+      transition: opacity 1s ease-in-out, transform .5s ease-in-out;
       @extend .text-100;
 
       &__secondary {
@@ -48,6 +49,22 @@
       &:hover {
         transform: scale(1.05);
       }
+    }
+  }
+
+  svg {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    opacity: 0;
+    transition: opacity .25s ease-in-out;
+
+    path:last-child {
+      display: none;
+    }
+
+    &:active {
+      opacity: 1;
     }
   }
 
@@ -67,8 +84,31 @@
       pointer-events: none;
     }
 
+    svg {
+      opacity: .5;
+    }
+
     &:after {
       background-color: transparent;
+      pointer-events: none;
+    }
+  }
+
+  &____zoom {
+
+    .image {
+      object-fit: contain;
+    }
+
+    svg path {
+
+      &:first-child {
+        display: none;
+      }
+
+      &:last-child {
+        display: initial;
+      }
     }
   }
 
@@ -81,6 +121,14 @@
 
       .counters {
         cursor: pointer;
+      }
+    }
+
+    svg {
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
       }
     }
   }

@@ -1,6 +1,7 @@
 'use client'
 
 import styles from './styles/page.module.scss'
+import Zoom from './icons/zoom'
 import { debounce } from './helpers'
 import { useState, useRef, useEffect } from 'react'
 
@@ -24,7 +25,7 @@ export default function Page() {
       imageInterval = setInterval(() => {
 
         setActiveImage(image => image < imageCount - 1 ? image + 1 : 0)
-        
+
       }, parseInt(audio.current.duration / imageCount) * 1000)
     }
   }
@@ -59,7 +60,7 @@ export default function Page() {
 
       {
 
-        [...Array(imageCount)].map((image, index) => (
+        new Array(imageCount).fill().map((image, index) => (
 
           <img src={`${process.env.BASE_URL}/images/${index}.jpg`} className={index !== activeImage ? styles.image : `${styles.image} ${styles.image____active}`} width="100%" height="100%" loading={activeImage + 2 >= index ? null : 'lazy'} key={index} />
         ))
@@ -81,6 +82,8 @@ export default function Page() {
         </button>
 
       </div>
+
+      <Zoom setZoom={() => root.current.classList.toggle(styles.root____zoom)} />
 
     </div>
   )
