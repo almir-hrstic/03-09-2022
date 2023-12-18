@@ -5,6 +5,5 @@ html {
   color: $color-white;
   background-color: $color-black;
   scroll-behavior: smooth;
-  --screen-height: 100vh;
   @extend .text-16;
 }

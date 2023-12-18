@@ -16,7 +16,7 @@ export default function Page() {
 
   let imageInterval = null
 
-  const setScreenHeight = () => root.current.style.setProperty('--screen-height', `${window.innerHeight}px`)
+  const setScreenHeight = () => root.current.style.setProperty('--screen-height', `${window.innerHeight - 1}px`)
 
   const setImages = () => {
 
@@ -28,7 +28,7 @@ export default function Page() {
 
   const getCounter = (date) => {
 
-    return `${Math.floor((new Date().getTime() - new Date(`${date} GMT+0100`).getTime()) / (1000 * 60 * 60 * 24))}`
+    return `${Math.floor(((new Date().getTime() - new Date(`${date} GMT+0100`).getTime()) / (1000 * 60 * 60 * 24)) + 1)}`
   }
 
   const setActive = () => {
