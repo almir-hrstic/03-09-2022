@@ -29,7 +29,7 @@
 
   &__container {
     max-width: $screen-extra-small;
-    padding: 0 20px;
+    padding: 40px 20px;
     margin: auto;
     z-index: 1;
 
@@ -116,7 +116,7 @@
   @media screen and (min-width: $screen-large) {
 
     &__container {
-      padding: 0 30px;
+      padding: 60px 30px;
 
       .counters {
         cursor: pointer;

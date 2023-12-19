@@ -16,7 +16,7 @@ export default function Page() {
 
   let imageInterval = null
 
-  const setScreenHeight = () => root.current.style.setProperty('height', `${window.innerHeight - .5}px`)
+  const setScreenHeight = () => root.current.style.setProperty('max-height', `${window.innerHeight}px`)
 
   const setImages = () => {
 
