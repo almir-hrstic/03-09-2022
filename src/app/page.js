@@ -42,12 +42,7 @@ export default function Page() {
   useEffect(() => {
 
     setScreenHeight()
-
-    window.addEventListener('resize', debounce(() => {
-
-      setScreenHeight()
-      alert(1)
-    }))
+    window.addEventListener('resize', debounce(() => setScreenHeight()))
 
     return () => clearInterval(imageInterval)
 
