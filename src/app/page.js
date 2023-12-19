@@ -1,8 +1,8 @@
 'use client'
 
 import styles from './styles/page.module.scss'
-import Zoom from './icons/zoom'
 import { debounce } from './helpers'
+import Zoom from './icons/zoom'
 import { useState, useRef, useEffect } from 'react'
 
 export default function Page() {
