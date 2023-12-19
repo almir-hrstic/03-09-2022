@@ -44,7 +44,7 @@
         opacity: .25;
       }
 
-      &:hover {
+      &:active {
         transform: scale(1.05);
       }
     }
@@ -119,6 +119,10 @@
 
       .counters {
         cursor: pointer;
+
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
 
