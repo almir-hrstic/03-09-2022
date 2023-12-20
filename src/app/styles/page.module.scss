@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   width: 100%;
-  height: var(--screen-height, 100vh);
+  min-height: var(--screen-height, 100vh);
   user-select: none;
 
   .image {
