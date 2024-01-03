@@ -44,7 +44,7 @@
         opacity: .25;
       }
 
-      &:active {
+      &:hover {
         transform: scale(1.05);
       }
     }
@@ -61,7 +61,7 @@
       display: none;
     }
 
-    &:active {
+    &:hover {
       opacity: 1;
     }
   }
@@ -119,19 +119,11 @@
 
       .counters {
         cursor: pointer;
-
-        &:hover {
-          transform: scale(1.05);
-        }
       }
     }
 
     svg {
       cursor: pointer;
-
-      &:hover {
-        opacity: 1;
-      }
     }
   }
 }
